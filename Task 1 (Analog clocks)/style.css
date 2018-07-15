@@ -9,7 +9,6 @@ html {
 }
 .clock {
     position: relative;
-    height: 1024px;
 }
 #bg {
     left: 10px;
