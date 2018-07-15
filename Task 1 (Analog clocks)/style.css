@@ -1,0 +1,22 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+.clock-element {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+}
+.clock {
+    position: relative;
+    height: 1024px;
+}
+#bg {
+    left: 10px;
+}
+#time {
+    width: 100px;
+    border: 2px solid black;
+    font-family: sans-serif;
+    font-size: 1.2em;
+}
