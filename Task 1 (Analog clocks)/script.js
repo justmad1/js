@@ -9,9 +9,9 @@ window.onload = () => {
     hours = hours * 30 + minutes / 12;
 
     function tick () {
-        document.querySelector('#second').style.transform = "rotate(" + seconds + "deg)";
-        document.querySelector('#minute').style.transform = "rotate(" + minutes + "deg)";
-        document.querySelector('#hour').style.transform = "rotate(" + hours + "deg)";
+        document.querySelector('#second').style.transform = `rotate( ${seconds}deg)`;
+        document.querySelector('#minute').style.transform = `rotate( ${minutes}deg)`;
+        document.querySelector('#hour').style.transform = `rotate( ${hours}deg)`;
         seconds += 6;
         minutes += 1 / 10;
         hours += 1 / 300;
@@ -28,8 +28,9 @@ window.onload = () => {
     }
     tick();
     let time = document.querySelector('#time');
-    time.oninput = function() {
+    time.addEventListener('input', function() {
+        seconds = parseInt(time.value[6] + time.value[7]) * 6;
         minutes = parseInt(time.value[3] + time.value[4]) * 6;
         hours = parseInt(time.value[0] + time.value[1]) * 30 + minutes / 12;
-    };
+    });
 }
