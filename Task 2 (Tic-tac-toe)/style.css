@@ -1,0 +1,49 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.wrapper {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.title, .replay{
+    font-size: 2em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.field {
+    width: 360px;
+    height: 360px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.cell {
+    --cell-color: #FFA500;
+    --border-color: #000;
+    font-family: Helvetica;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    float: left;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    background-color: var(--cell-color);
+    text-align: center;
+    transition: 0.2s ease;
+    font-size: 5em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.cell:hover {
+    border: 4px dashed #00008B;
+    cursor: pointer;
+}
