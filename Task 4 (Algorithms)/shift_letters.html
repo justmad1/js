@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shift letters</title>
+</head>
+
+<body>
+    <input id="string" type="text" style=" margin: 20px; font-size: 1.5em;">
+    <label for="string" style="font-size: 1.5em;">Mas</label>
+    <input id="shift" type="text" style=" width: 50px; margin: 20px; font-size: 1.5em;">
+    <label for="shift" style="font-size: 1.5em;">Shift</label>
+    <p style=" margin: 20px; font-size: 1.5em;">Change Shift to trigger the function</p>
+    <script>
+
+    var isAlpha = function(ch){
+        return /^[A-Z]$/i.test(ch);
+    }
+
+    function sumOfTwo (str, shift) {
+        let arr = str.split("");
+        for (i in str) {
+            let localShift = shift;
+            if (isAlpha(arr[i])) {
+                while (str.charCodeAt(i) <= 90 && str.charCodeAt(i) + localShift > 90)   localShift -= 26;
+                while (str.charCodeAt(i) <= 122 && str.charCodeAt(i) + localShift > 122) localShift -= 26;
+                arr[i] = String.fromCharCode(str.charCodeAt(i) + localShift);
+
+            }
+        }
+        return arr.join("");
+    }
+
+    let el = document.querySelector("#shift");
+    el.addEventListener("change", function() {
+        let str = document.querySelector("#string").value;
+        let shift = parseInt(el.value);
+        console.log(sumOfTwo(str, shift));
+    });
+    </script>
+</body>
+
+</html>

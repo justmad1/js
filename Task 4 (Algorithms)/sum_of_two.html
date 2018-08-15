@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sum of two</title>
+</head>
+
+<body>
+    <input id="arr" type="text" style=" margin: 20px; font-size: 1.5em;">
+    <label for="arr" style="font-size: 1.5em;">Mas</label>
+    <input id="sum" type="text" style=" width: 50px; margin: 20px; font-size: 1.5em;">
+    <label for="sum" style="font-size: 1.5em;">Sum</label>
+    <p style=" margin: 20px; font-size: 1.5em;">Change Sum to trigger the function</p>
+    <script>
+
+    function sumOfTwo (arr, sum) {
+        let answer = [];
+        for (let i = 0; i < arr.length; i++) {
+            for (j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == sum) answer.push([arr[i], arr[j]]);
+            }
+        }
+        return answer;
+    }
+
+    let el = document.querySelector("#sum");
+    el.addEventListener("change", function() {
+        let arr = document.querySelector("#arr").value.split(" ").map((item) => {return parseInt(item)});
+        let sum = el.value.split(" ");
+        console.log(sumOfTwo(arr, sum));
+    });
+    </script>
+</body>
+
+</html>

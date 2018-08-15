@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+    function checkPalindrome(str) {
+        str = str.toLowerCase().replace(/\s+/g, '');
+        let palindrome = true;
+
+        for (let i = 0, j = str.length - 1; i < j; i++, j--) {
+            if (str[i] != str[j]) {
+                palindrome = false;
+                break;
+            }
+        }
+        return palindrome;
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        let str = el.value;
+        console.log(checkPalindrome(str));
+    });
+    </script>
+</body>
+
+</html>

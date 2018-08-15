@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Integer reversal</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+    var isAlpha = function(ch) {
+        return /^[A-Z]$/i.test(ch);
+    }
+
+    function reverseInteger(num) {
+        num = num.toString().split("").reverse();
+        if (num[num.length - 1] == '-') num.unshift(num.pop());
+        return parseInt(num.join(""));
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        if (el.value.toString !== "NaN") {
+            let el_str = parseInt(el.value);
+            console.log(reverseInteger(el_str));
+        }
+    });
+    </script>
+</body>
+
+</html>

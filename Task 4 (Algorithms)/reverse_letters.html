@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reverse letters</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+    function reverseLettersInWord (str) {
+        let arr = str.split(" ");
+        arr = arr.map((item) => {
+            return item.split("").reverse().join("");
+        });
+        return arr.join(" ");
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        let str = el.value;
+        console.log(reverseLettersInWord(str));
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reverse array</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+
+    function reverseArray (arr) {
+        let new_arr = arr.sort((a ,b) => {if (a < b) return 1;});
+        return new_arr; 
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        let arr = el.value.split(" ");
+        console.log(reverseArray(arr));
+    });
+    </script>
+</body>
+
+</html>

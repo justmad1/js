@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Array summary</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+    function summarizeArray(arr) {
+        let summary = { max: parseInt(arr[0]), min: parseInt(arr[0]), sum: 0, avg: 0 };
+        for (i in arr) {
+            if (parseInt(arr[i]) > summary['max']) { summary['max'] = parseInt(arr[i]); }
+            if (parseInt(arr[i]) < summary['min']) { summary['min'] = parseInt(arr[i]); }
+            summary['sum'] += parseInt(arr[i]);
+        }
+        summary['avg'] = Math.round(summary['sum'] / arr.length);
+        return summary;
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        let arr = el.value.split(" ");
+        console.log(summarizeArray(arr));
+    });
+    </script>
+</body>
+
+</html>

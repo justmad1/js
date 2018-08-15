@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Array chunking</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+
+    function splitArrayOnChunks (arr) {
+        for (let i = 0, len = arr.length; i < len; i++) {
+            let new_mas = [arr.shift()];
+            if (++i < len) new_mas.push(arr.shift());
+            arr.push(new_mas);
+        }
+        return arr;
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        let arr = el.value.split(" ");
+
+        console.log(splitArrayOnChunks(arr));
+    });
+    </script>
+</body>
+
+</html>

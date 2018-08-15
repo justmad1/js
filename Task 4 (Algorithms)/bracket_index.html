@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bracket index</title>
+</head>
+
+<body>
+    <input id="string" type="text" style=" margin: 20px; font-size: 1.5em;">
+    <label for="string" style="font-size: 1.5em;">String</label>
+    <input id="index" type="text" style=" width: 50px; margin: 20px; font-size: 1.5em;">
+    <label for="index" style="font-size: 1.5em;">Index of bracket</label>
+    <p style=" margin: 20px; font-size: 1.5em;">Change Index of bracket to trigger the function</p>
+    <script>
+
+    function findIndexOfClosingBracket(string, index) {
+        if (string[index] != '(') return -1;
+        else {
+            for (let counter = 0; index < string.length; index++) {
+                if (string.charAt(index) == '(') counter++;
+                if (string.charAt(index) == ')') counter--;
+                if (!counter) return index;
+            }
+            return -1;
+        }
+    }
+
+    let el = document.querySelector("#string");
+    let ind = document.querySelector("#index");
+    ind.addEventListener("change", function() {
+        let string = el.value;
+        let index = ind.value;
+        console.log(findIndexOfClosingBracket(string, index));
+    });
+
+    </script>
+</body>
+
+</html>

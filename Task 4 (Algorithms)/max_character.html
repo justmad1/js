@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Max character</title>
+</head>
+
+<body>
+    <input type="text" style=" margin: 20px; font-size: 1.5em;">
+    <script>
+    function findMaxCharacter (str) {
+        let arr = str.split("");
+        let letter_obj = {};
+        for (i in arr) {
+            if (!letter_obj[arr[i]]) letter_obj[arr[i]] = 1;
+            else letter_obj[arr[i]]++;
+        }
+        let max = letter_obj[arr[0]];
+        for (i in letter_obj) {
+            if (letter_obj[i] > max) max = letter_obj[i];
+        }
+        let letters = [];
+        for (i in letter_obj) {
+            if (letter_obj[i] == max) letters.push(letter_obj[i]);
+        }
+        
+        return letters.join(", ");
+    }
+
+    let el = document.querySelector("input[type=text]");
+    el.addEventListener("change", function() {
+        let str = el.value;
+        console.log(findMaxCharacter(str));
+    });
+    </script>
+</body>
+
+</html>
