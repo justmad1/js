@@ -1,0 +1,264 @@
+$contrast-color: #3DAFBD
+$font-color: #999
+$title-color: #4a4a4a
+$white: #fff
+
+*
+  margin: 0
+  font-family: 'Times'
+
+button
+  font-size: 15px
+  cursor: pointer
+  background-color: $contrast-color
+  border-radius: 7px
+  border: none
+  padding: 7px
+  color: $white
+
+button:hover
+  color: $contrast-color
+  background-color: $white
+
+.container
+  max-width: 1400px
+  margin: auto
+  display: grid
+  grid-template-columns: 100%
+  grid-template-rows: 150px 380px 1fr 1fr 290px
+  min-height: 100vh
+  grid-template-areas: "header" "box-1" "box-2" "box-3" "footer"
+
+.content
+  border-top: 1px solid silver
+
+.header
+  grid-area: header
+  border-top: 10px solid $contrast-color
+  display: grid
+  grid-template-columns: 1fr 2fr
+  .social
+    display: flex
+    align-items: center
+    margin-left: 10px
+    img
+      width: 30px
+      height: 30px
+      padding: 0px 10px
+  .logo
+    padding-left: 20px
+    .logo-big
+      color: $title-color
+      margin: -13px 0px
+      font-size: 2.9em
+    .logo-small
+      color: $font-color      
+  .search
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    input
+      width: 260px
+      height: 25px
+      padding: 3px
+      background-color: $title-color
+      color: #fff
+      font-size: 1.25em
+      border: none
+      margin-right: 5px 
+      border-radius: 7px
+  .menu
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    ul
+      display: flex
+      flex-wrap: wrap
+      list-style-type: none
+      justify-content: space-around
+      align-items: end
+      li
+        a
+          margin: 0px 10px
+          color: $title-color
+          text-decoration: none
+        a:hover
+          color: $contrast-color
+
+.box-1
+  justify-content: space-around
+  align-items: center
+  display: flex
+  grid-area: box-1
+  img
+    width: 400px
+    height: 300px
+  .container-text
+    flex-basis: 500px
+    margin: 0px 10px
+    height: 300px
+    h1
+      margin-top: 50px
+      color: $title-color
+    p 
+      margin: 20px 0px
+      line-height: 1.3em
+      color: $font-color
+    .buttons
+      display: flex
+      justify-content: flex-end
+      margin-top: 60px
+      button
+        margin: 2px
+
+.box-2
+  justify-content: space-around
+  display: flex
+  grid-area: box-2
+  flex-wrap: wrap
+
+.box-3
+  grid-area: box-3
+  padding: 20px 0px
+  h3
+    text-align: center
+    min-width: 500px
+    margin: 40px 0px
+
+.container-item-big, .container-item-small
+  margin: 40px 0px
+  flex-basis: 300px
+
+.container-item-big
+  img
+    width: 300px
+    height: 160px
+  h3
+    margin: 20px 0px
+    color: $title-color
+  p
+    margin: 20px 0px
+    line-height: 1.3em
+    color: $font-color
+
+.container-box
+  display: flex
+  justify-content: space-around
+  flex-wrap: wrap
+
+.quote
+  font-size: 1.5em
+  color: $title-color
+  width: 60%
+  margin: 22px auto
+  text-align: center
+
+.container-item-small
+  img
+    border: 1px solid silver
+    padding: 3px
+    margin-right: 10px
+    float: left
+    width: 80px
+    height: 80px
+  h5
+    width: 200px
+    float: left
+    color: $contrast-color
+  p
+    color: $font-color
+
+.round 
+  border: 1px solid $contrast-color
+
+.round:hover
+  cursor: pointer
+  background-color: $white
+
+.footer
+  grid-area: footer
+  a
+    color: $contrast-color
+    text-decoration: none
+  .info
+    padding: 0px 20px
+    display: grid
+    grid-template-columns: repeat(4, minmax(200px, 1fr))
+    height: 260px
+    background-color: #252525
+    ul
+      list-style-type: none
+      padding-left: 0px
+    .footer-title
+      color: $white
+      font-size: 1.5em
+      margin-bottom: 20px
+    .footer-item
+      padding: 30px 0px
+    .contact
+      color: $font-color
+      ul li:nth-child(5)
+        padding-top: 10px
+    .links
+      ul li
+        padding-bottom: 5px
+        border-bottom: 1px solid #222222
+    .blog
+      color: $font-color
+      .blog-title
+        padding-bottom: 2px
+      .posted-by
+        padding-bottom: 5px
+      .blog-content
+        width: minmax(200px, 90%)
+      a
+        padding: 10px
+        float: right
+    .news
+      margin-left: 30px
+      input
+        width: 200px
+        height: 25px
+        background-color: #272727
+        color: $font-color
+        font-size: 1.1em
+        border: none
+        border-radius: 7px
+        margin-bottom: 10px
+      button
+        width: 80px
+
+  .copyright
+    height: 60px
+    background-color: #1a1a1a
+    color: $font-color
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0px 20px
+
+@media screen and (max-width: 720px)
+  .container
+    grid-template-rows: 300px 640px 1fr 1fr 600px
+    min-width: 450px
+  .header
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    .logo
+      order: 1
+    .social
+      order: 2
+    .search
+      order: 3
+    .menu
+      order: 4
+  .box-1
+    flex-direction: column
+    img
+      margin-top: 20px
+  .footer
+    .info
+      height: 540px
+      grid-template-columns: repeat(2, minmax(200px, 1fr))
