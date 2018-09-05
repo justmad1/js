@@ -15,6 +15,7 @@
     <script>
 
     function sumOfTwo (arr, sum) {
+        arr = arr.map((item) => {return parseInt(item)});
         let answer = [];
         for (let i = 0; i < arr.length; i++) {
             for (j = i + 1; j < arr.length; j++) {
@@ -26,8 +27,8 @@
 
     let el = document.querySelector("#sum");
     el.addEventListener("change", function() {
-        let arr = document.querySelector("#arr").value.split(" ").map((item) => {return parseInt(item)});
-        let sum = el.value.split(" ");
+        let arr = document.querySelector("#arr").value.split(" ");
+        let sum = el.value;
         console.log(sumOfTwo(arr, sum));
     });
     </script>
