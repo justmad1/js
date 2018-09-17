@@ -1,0 +1,111 @@
+* {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  background-color: #E7F9FF;
+  font-family: "Gamja Flower", cursive;
+  border: none;
+  padding: 0;
+  margin: 0; }
+
+body {
+  overflow: hidden; }
+
+.wrapper {
+  max-width: 1024px;
+  min-width: 650px;
+  margin: auto;
+  height: 100vh; }
+  .wrapper h2 {
+    margin: 2vh 0px;
+    font-size: 4em;
+    text-align: center;
+    color: #4B4BFF;
+    text-decoration: underline; }
+  .wrapper .inp {
+    margin-left: 1%;
+    margin-bottom: 1%;
+    padding-left: 20px;
+    border: 2px outset #CAE1F2;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #CAE1F2;
+    color: #86A7FF;
+    font-size: 3em;
+    width: 77%; }
+  .wrapper .inp::placeholder {
+    color: #86A7FF;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .wrapper .add {
+    margin-left: 2%;
+    border: 2px outset #CAE1F2;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #CAE1F2;
+    color: #86A7FF;
+    font-size: 3em;
+    width: 19%; }
+  .wrapper .list {
+    height: auto;
+    min-height: 10vh;
+    max-height: 65vh;
+    overflow: scroll; }
+  .wrapper .item {
+    width: 96%;
+    margin: 10px 0px 5px 1%;
+    margin-left: 1%;
+    display: block;
+    list-style-type: none;
+    padding-left: 20px;
+    border: 2px outset #CAE1F2;
+    border-radius: 3px;
+    background-color: #CAE1F2;
+    color: #86A7FF;
+    font-size: 3em; }
+    .wrapper .item input {
+      border: 2px outset #CAE1F2;
+      border-radius: 3px;
+      box-sizing: border-box;
+      color: #86A7FF;
+      width: 35px;
+      height: 35px; }
+    .wrapper .item span {
+      background-color: transparent;
+      cursor: default; }
+    .wrapper .item .item-button {
+      cursor: pointer;
+      margin-right: 20px;
+      float: right; }
+    .wrapper .item .close {
+      color: #FF6868; }
+  .wrapper .item:hover {
+    background-color: #86A7FF; }
+    .wrapper .item:hover .text {
+      color: #CAE1F2; }
+    .wrapper .item:hover .edit {
+      color: #CAE1F2; }
+  .wrapper .checked {
+    background-color: #86A7FF; }
+    .wrapper .checked .text {
+      color: #CAE1F2;
+      text-decoration: line-through; }
+    .wrapper .checked .close, .wrapper .checked .edit {
+      color: #CAE1F2; }
+  .wrapper .clear {
+    display: none;
+    padding: 0px 10px;
+    margin-top: 20px;
+    margin-left: 1%;
+    border: 2px outset #CAE1F2;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #CAE1F2;
+    color: #FF6868;
+    font-size: 3em; }

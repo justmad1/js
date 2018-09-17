@@ -1,0 +1,155 @@
+$bg-color: #E7F9FF;
+$title-color: #4B4BFF;
+$font-color: #86A7FF;
+$inp-color: #CAE1F2;
+$red-color: #FF6868;
+$font: 'Gamja Flower', cursive;
+
+* {
+    -webkit-user-select: none;
+ /* Chrome all / Safari all */
+
+ -moz-user-select: none;
+ /* Firefox all */
+
+ -ms-user-select: none;
+ /* IE 10+ */
+
+    user-select: none; 
+    background-color: $bg-color;
+    font-family: $font;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+.wrapper {
+    max-width: 1024px;
+    min-width: 650px;
+    margin: auto;
+    height: 100vh;
+
+    h2 {
+        margin: 2vh 0px;
+        font-size: 4em;
+        text-align: center;
+        color: $title-color;
+        text-decoration: underline;
+    }
+    
+    .inp {
+        margin-left: 1%;
+        margin-bottom: 1%;
+        padding-left: 20px;
+        border: 2px outset $inp-color;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: $inp-color;
+        color: $font-color;
+        font-size: 3em;
+        width: 77%;
+    }
+    .inp::placeholder {
+        color: $font-color;
+        overflow: hidden;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .add {
+        margin-left: 2%;
+        border: 2px outset $inp-color;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: $inp-color;
+        color: $font-color;
+        font-size: 3em;
+        width: 19%;
+        
+    }
+    
+    .list {
+        height: auto;
+        min-height: 10vh;
+        max-height: 65vh;
+        overflow: scroll;
+    }
+
+    .item {
+        width: 96%;
+        margin: 10px 0px 5px 1%;
+        margin-left: 1%;
+        display: block;
+        list-style-type: none;
+        padding-left: 20px;
+        border: 2px outset $inp-color;
+        border-radius: 3px;
+        background-color: $inp-color;
+        color: $font-color;
+        font-size: 3em;
+        
+        input {
+            border: 2px outset $inp-color;
+            border-radius: 3px;
+            box-sizing: border-box;
+            color: $font-color;
+            width: 35px;
+            height: 35px;
+        }
+        span {
+            background-color: transparent;
+            cursor: default;
+        }
+        .item-button {
+            cursor: pointer;
+            margin-right: 20px;
+            float: right;
+        }
+        .close {
+            color: $red-color;
+        }
+    }
+    .item:hover {
+        background-color: $font-color;
+        .text {
+            color: $inp-color;
+        }
+        .edit {
+            color: $inp-color;
+        }
+    }
+    
+    .checked {
+        background-color: $font-color;
+        .text {
+            color: $inp-color;
+            text-decoration: line-through;
+        }
+        .close, .edit {
+            color: $inp-color;
+        }
+    }
+    .checked:hover {
+
+    }
+
+    .clear {
+        display: none;
+        //width: 25%;
+        //margin: auto;
+        padding: 0px 10px;
+        margin-top: 20px;
+        margin-left: 1%;
+        border: 2px outset $inp-color;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: $inp-color;
+        color: $red-color;
+        font-size: 3em;
+    }
+}
