@@ -23,18 +23,25 @@ $font: 'Gamja Flower', cursive;
     margin: 0;
 }
 
-body {
-    overflow: hidden;
-}
-
 .wrapper {
     max-width: 1024px;
-    min-width: 650px;
+    min-width: 490px;
     margin: auto;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .flex-item:first-child {
+        height: 150px;
+    }
+    .flex-item:nth-child(2) {
+        height: auto;
+    }
+    .flex-item:last-child {
+        height: 100px;
+    }
 
     h2 {
-        margin: 2vh 0px;
         font-size: 4em;
         text-align: center;
         color: $title-color;
@@ -52,13 +59,14 @@ body {
         color: $font-color;
         font-size: 3em;
         width: 77%;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     }
     .inp::placeholder {
         color: $font-color;
         overflow: hidden;
-        white-space: nowrap; 
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .add {
@@ -84,7 +92,9 @@ body {
         width: 96%;
         margin: 10px 0px 5px 1%;
         margin-left: 1%;
-        display: block;
+        display: flex;
+        grid-template-coloumns: 50px 1fr 100px 100px;
+        grid-template-rows: 100%;
         list-style-type: none;
         padding-left: 20px;
         border: 2px outset $inp-color;
@@ -92,34 +102,46 @@ body {
         background-color: $inp-color;
         color: $font-color;
         font-size: 3em;
-        
+        align-items: center;
+
         input {
+            flex-basis: 30px;
             border: 2px outset $inp-color;
             border-radius: 3px;
             box-sizing: border-box;
             color: $font-color;
-            width: 35px;
-            height: 35px;
         }
         span {
             background-color: transparent;
             cursor: default;
         }
         .item-button {
+            text-align: right;
             cursor: pointer;
             margin-right: 20px;
             float: right;
         }
+        .edit {
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+        }
         .close {
-            color: $red-color;
+            background-color: transparent;
+            padding-top: 5px;
+            width: 30px;
+            height: 30px;
+        }
+        .text {
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
     .item:hover {
         background-color: $font-color;
         .text {
-            color: $inp-color;
-        }
-        .edit {
             color: $inp-color;
         }
     }
@@ -130,18 +152,10 @@ body {
             color: $inp-color;
             text-decoration: line-through;
         }
-        .close, .edit {
-            color: $inp-color;
-        }
-    }
-    .checked:hover {
-
     }
 
     .clear {
         display: none;
-        //width: 25%;
-        //margin: auto;
         padding: 0px 10px;
         margin-top: 20px;
         margin-left: 1%;

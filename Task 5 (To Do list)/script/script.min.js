@@ -11,17 +11,17 @@ const liMaker = (data) => {
     const li = document.createElement('li');
     const cb = document.createElement('input');
     const text = document.createElement('span');
-    const close = document.createElement('span');
-    const edit = document.createElement('span');
+    const close = document.createElement('img');
+    const edit = document.createElement('img');
     cb.type = "checkbox";
     text.innerHTML = data;
     text.classList.add("text");
     inp.value = "";
     li.className = "item";
-    close.innerHTML = "X";
+    close.src = "media/close.png";
     close.className = "item-button close";
     edit.className = "item-button edit";
-    edit.innerHTML = "edit";
+    edit.src = "media/edit.png";
     close.addEventListener('click', () => {
         if (confirm("Remove this item?")) {
             li.remove();
@@ -32,11 +32,25 @@ const liMaker = (data) => {
         }
     });
     edit.addEventListener('click', () => {
-        text.innerHTML = prompt("Edit text here", text.innerHTML);
+        let input = prompt("Edit text here", text.innerHTML);
+        text.innerHTML = input ? input : text.innerHTML;
         itemsArray.splice(itemsArray.indexOf(data), 1, text.innerHTML);
         localStorage.setItem('items', JSON.stringify(itemsArray));
     });
-    li.addEventListener('click', (event) => {
+
+    text.addEventListener('click', event => {
+        if (event.toElement != edit && event.toElement != close) {
+            if (li.classList.length > 1) {
+                li.classList.remove("checked");
+                li.firstChild.checked = false;
+            } else {
+                li.classList.add("checked");
+                li.firstChild.checked = true;
+            }
+        }
+    });
+
+    li.addEventListener('click', event => {
         if (event.toElement == li || event.toElement == cb) {
             if (li.classList.length > 1) {
                 li.classList.remove("checked");
@@ -47,10 +61,11 @@ const liMaker = (data) => {
             }
         }
     });
+
     li.appendChild(cb);
     li.appendChild(text);
-    li.appendChild(close);
     li.appendChild(edit);
+    li.appendChild(close);
     ul.appendChild(li);
     itemsCount++;
     check();
@@ -112,7 +127,6 @@ clear[1].addEventListener('click', () => {
     }
 });
 
-storageData.forEach( item => {
+storageData.forEach(item => {
     liMaker(item);
 });
-

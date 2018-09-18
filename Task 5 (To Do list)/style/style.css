@@ -12,16 +12,20 @@
   padding: 0;
   margin: 0; }
 
-body {
-  overflow: hidden; }
-
 .wrapper {
   max-width: 1024px;
-  min-width: 650px;
+  min-width: 490px;
   margin: auto;
-  height: 100vh; }
+  height: 100vh;
+  display: flex;
+  flex-direction: column; }
+  .wrapper .flex-item:first-child {
+    height: 150px; }
+  .wrapper .flex-item:nth-child(2) {
+    height: auto; }
+  .wrapper .flex-item:last-child {
+    height: 100px; }
   .wrapper h2 {
-    margin: 2vh 0px;
     font-size: 4em;
     text-align: center;
     color: #4B4BFF;
@@ -36,13 +40,13 @@ body {
     background-color: #CAE1F2;
     color: #86A7FF;
     font-size: 3em;
-    width: 77%; }
-  .wrapper .inp::placeholder {
-    color: #86A7FF;
-    overflow: hidden;
+    width: 77%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+  .wrapper .inp::placeholder {
+    color: #86A7FF;
+    overflow: hidden; }
   .wrapper .add {
     margin-left: 2%;
     border: 2px outset #CAE1F2;
@@ -61,43 +65,54 @@ body {
     width: 96%;
     margin: 10px 0px 5px 1%;
     margin-left: 1%;
-    display: block;
+    display: flex;
+    grid-template-coloumns: 50px 1fr 100px 100px;
+    grid-template-rows: 100%;
     list-style-type: none;
     padding-left: 20px;
     border: 2px outset #CAE1F2;
     border-radius: 3px;
     background-color: #CAE1F2;
     color: #86A7FF;
-    font-size: 3em; }
+    font-size: 3em;
+    align-items: center; }
     .wrapper .item input {
+      flex-basis: 30px;
       border: 2px outset #CAE1F2;
       border-radius: 3px;
       box-sizing: border-box;
-      color: #86A7FF;
-      width: 35px;
-      height: 35px; }
+      color: #86A7FF; }
     .wrapper .item span {
       background-color: transparent;
       cursor: default; }
     .wrapper .item .item-button {
+      text-align: right;
       cursor: pointer;
       margin-right: 20px;
       float: right; }
+    .wrapper .item .edit {
+      background-color: transparent;
+      width: 30px;
+      height: 30px; }
     .wrapper .item .close {
-      color: #FF6868; }
+      background-color: transparent;
+      padding-top: 5px;
+      width: 30px;
+      height: 30px; }
+    .wrapper .item .text {
+      flex-grow: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   .wrapper .item:hover {
     background-color: #86A7FF; }
     .wrapper .item:hover .text {
-      color: #CAE1F2; }
-    .wrapper .item:hover .edit {
       color: #CAE1F2; }
   .wrapper .checked {
     background-color: #86A7FF; }
     .wrapper .checked .text {
       color: #CAE1F2;
       text-decoration: line-through; }
-    .wrapper .checked .close, .wrapper .checked .edit {
-      color: #CAE1F2; }
   .wrapper .clear {
     display: none;
     padding: 0px 10px;

@@ -9,12 +9,18 @@
 </head>
 <body>
     <div class="wrapper">
-        <h2> TODO List </h2>
-        <input class="inp" type="text" placeholder="Type a new task here">
-        <button disabled=true class="add"> Add </button>
-        <ul class="list"></ul>
-        <button class="clear"> Clear all </button>
-        <button class="clear"> Clear selected </button>
+        <div class="flex-item">
+            <h2> TODO List </h2>
+            <input class="inp" type="text" placeholder="Type a new task here">
+            <button disabled=true class="add"> Add </button>
+        </div>
+        <div class="flex-item">
+            <ul class="list"></ul>
+        </div>
+        <div class="flex-item">
+            <button class="clear"> Clear all </button>
+            <button class="clear"> Clear selected </button>
+        </div>
     </div>
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
     <script type="text/javascript" src="script/script.js"></script>
