@@ -11,14 +11,14 @@
     <script>
     function reverseLettersInWord (str) {
         let arr = str.split(" ");
-        arr = arr.map((item) => {
+        arr = arr.map(item => {
             return item.split("").reverse().join("");
         });
         return arr.join(" ");
     }
 
     let el = document.querySelector("input[type=text]");
-    el.addEventListener("change", function() {
+    el.addEventListener("change", () => {
         let str = el.value;
         console.log(reverseLettersInWord(str));
     });

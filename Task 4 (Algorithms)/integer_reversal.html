@@ -15,7 +15,7 @@
 
     function reverseInteger(num) {
         num = num.toString().split("").reverse();
-        if (num[num.length - 1] == '-') num.unshift(num.pop());
+        if (num[num.length - 1] == '-') num.unshift(num.pop());// Решил не использовать Math.sign(), т.к немного другая логика
         return parseInt(num.join(""));
     }
 

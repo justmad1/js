@@ -13,6 +13,10 @@
     <label for="shift" style="font-size: 1.5em;">Shift</label>
     <p style=" margin: 20px; font-size: 1.5em;">Change Shift to trigger the function</p>
     <script>
+    
+    const leftBorder = 90;
+    const rightBorder = 122;
+    const step = 26;
 
     var isAlpha = function(ch){
         return /^[A-Z]$/i.test(ch);
@@ -23,8 +27,8 @@
         for (i in str) {
             let localShift = shift;
             if (isAlpha(arr[i])) {
-                while (str.charCodeAt(i) <= 90 && str.charCodeAt(i) + localShift > 90)   localShift -= 26;
-                while (str.charCodeAt(i) <= 122 && str.charCodeAt(i) + localShift > 122) localShift -= 26;
+                while (str.charCodeAt(i) <= leftBorder && str.charCodeAt(i) + localShift > leftBorder)   localShift -= step;
+                while (str.charCodeAt(i) <= rightBorder && str.charCodeAt(i) + localShift > rightBorder) localShift -= step;
                 arr[i] = String.fromCharCode(str.charCodeAt(i) + localShift);
 
             }
