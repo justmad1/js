@@ -1,0 +1,64 @@
+$bgc: #A9C6FF;
+$select-bgc: #87AEFC;
+$font-size: 1.3em;
+
+body {
+    font-size: $font-size;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    padding: 0 20px;
+    background-color: $bgc;
+    display: flex;
+    min-width: 600px;
+    max-width: 1024px;
+    margin: auto;
+    flex-direction: column;
+    .top-info {
+        margin: 20px 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .controls {
+        display: grid;
+        grid-template-columns: 50px 50px 1fr 100px 150px;
+        div {
+            text-align: center;
+            align-self: center;
+            .slider {
+                width: 100%;
+            }
+            img {
+                -webkit-transition: 0.5s linear;
+                -moz-transition: 0.5s linear;
+                -o-transition: 0.5s linear;
+                transition: 0.5s linear;
+            }
+        }
+        .volume {
+            display: flex;
+        }
+    }
+    .songs {
+        .list {
+            padding: 0;
+            .list-item {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                cursor: pointer;
+            }
+            .list-item:hover {
+                background-color: $select-bgc;
+            }
+            .selected {
+                background-color: $select-bgc;
+            }
+        }
+    }
+}
+

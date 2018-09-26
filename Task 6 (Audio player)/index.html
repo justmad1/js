@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <title> Audio player </title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="top-info">
+            <div class="status"> Play </div>
+            <div class="name"> Song </div>
+        </div>
+        <div class="controls">
+            <div class="replay">
+                <img alt="replay icon" src="media/images/replay.png">
+            </div>
+            <div class="play-pause">
+                <img alt="play pause icon" src="media/images/play.png">
+            </div>
+            <div class="container-slider">
+                <input class="slider" type="range" min="0" max="100" value="0" step="0.01">
+            </div>
+            <div class="time"> 0:00/0:00 </div>
+            <div class="volume">
+                <img alt="volume icon" src="media/images/volume.png">
+                <input type="range" min="0" max="1" value="0.2" step="0.01">
+            </div>
+        </div>
+        <div class="songs">
+            <ol class="list">
+                
+            </ol>
+        </div>
+    </div>
+    <script src="script/script.js"></script>
+    <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>
