@@ -1,10 +1,12 @@
 window.onload = () => {
-    let count = 0;
     const artist = 'Rammstein',
         list = document.querySelector('.list'),
-        slider = document.querySelector('.slider');
+        slider = document.querySelector('.slider'),
+        timeEl = document.querySelector('.time');
     let deg = -360,
+        count = 0,
         time = 0,
+        tempDate,
         seconds = 0,
         date = new Date(null),
         songsArr = [
@@ -30,7 +32,7 @@ window.onload = () => {
         div1.innerHTML = (i + 1) + songName;
         audio.addEventListener('loadedmetadata', () => {
             tempDate.setSeconds(audio.duration);
-            div2.innerHTML = tempDate.getUTCMinutes().toString() + ':' + (tempDate.getUTCSeconds() < 10 ? '0' + tempDate.getUTCSeconds().toString() : tempDate.getUTCSeconds().toString());
+            div2.innerText = `${tempDate.getUTCMinutes().toString()}:${(tempDate.getUTCSeconds() < 10 ? '0' + tempDate.getUTCSeconds().toString() : tempDate.getUTCSeconds().toString())}`;
         });
         div1.classList.add('song');
         div2.classList.add('duration');
@@ -49,7 +51,7 @@ window.onload = () => {
                 }
                 document.querySelector('.selected').classList.remove('selected');
                 li.classList.add('selected');
-                document.querySelector('.time').innerHTML = "0:00/" + document.querySelector('.selected .duration').innerText;
+                document.querySelector('.time').innerHTML = `0:00/${document.querySelector('.selected .duration').innerText}`;
                 document.querySelector('.name').innerHTML = document.querySelector('.selected .song').innerHTML;
                 playMusic(true);
             }
@@ -63,11 +65,11 @@ window.onload = () => {
         const length = songsArr.length;
         for (i = 0; i < length; i++) {
             audio = new Audio('media/audio/' + songsArr[i] + '.mp3');
-            liMaker(audio, i, ' ' + songsArr[i]);
+            liMaker(audio, i, ` ${artist} - ${songsArr[i]}`);
         }
         list.firstElementChild.classList.add('selected');
         setTimeout(() => {
-            document.querySelector('.time').innerHTML = "0:00/" + document.querySelector('.selected .duration').innerText;
+            document.querySelector('.time').innerHTML = `0:00/${document.querySelector('.selected .duration').innerText}`;
             document.querySelector('.name').innerHTML = document.querySelector('.selected .song').innerHTML;
             const mas = document.querySelector('.selected .duration').innerText.split(":");
             seconds = (+mas[0] * 60) + (+mas[1]);
@@ -85,14 +87,13 @@ window.onload = () => {
     function playMusic(onlyPlay) {
         let audio = document.querySelector('.selected').lastElementChild;
         audio.volume = document.querySelector('.volume input').value;
-        let timeEl = document.querySelector('.time');
 
         function moveSlider() {
             if (!audio.paused) {
                 time += 10 / seconds;
                 slider.value = time;
                 date.setMilliseconds(date.getUTCMilliseconds() + 100);
-                timeEl.innerHTML = date.getUTCMinutes().toString() + ':' + (date.getUTCSeconds() < 10 ? '0' + date.getUTCSeconds().toString() : date.getUTCSeconds().toString()) + "/" + document.querySelector('.selected .duration').innerText;
+                timeEl.innerHTML = `${date.getUTCMinutes().toString()}:${(date.getUTCSeconds() < 10 ? '0' + date.getUTCSeconds().toString() : date.getUTCSeconds().toString())}/${document.querySelector('.selected .duration').innerText}`;
                 if (slider.value === "100" || audio.ended) {
                     slider.value = "0";
                     date.setTime(null);
@@ -120,11 +121,11 @@ window.onload = () => {
 
     document.querySelector('.replay img').addEventListener('click', event => {
         audio = document.querySelector('.selected').lastElementChild;
-        event.target.style.webkitTransform = 'rotate(' + deg + 'deg)';
-        event.target.style.mozTransform = 'rotate(' + deg + 'deg)';
-        event.target.style.msTransform = 'rotate(' + deg + 'deg)';
-        event.target.style.oTransform = 'rotate(' + deg + 'deg)';
-        event.target.style.transform = 'rotate(' + deg + 'deg)';
+        event.target.style.webkitTransform = `rotate(${deg}deg)`;
+        event.target.style.mozTransform = `rotate(${deg}deg)`;
+        event.target.style.msTransform = `rotate(${deg}deg)`;
+        event.target.style.oTransform = `rotate(${deg}deg)`;
+        event.target.style.transform = `rotate(${deg}deg)`;
         deg -= 360;
         audio.currentTime = 0;
         reset();
@@ -139,7 +140,6 @@ window.onload = () => {
     });
 
     document.querySelector('.slider').addEventListener('mouseup', () => {
-        
         const mas = document.querySelector('.selected .duration').innerText.split(":");
         seconds = (+mas[0] * 60) + (+mas[1]);
         time = parseInt(document.querySelector('.slider').value);
