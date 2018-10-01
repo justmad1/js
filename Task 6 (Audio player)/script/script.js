@@ -2,13 +2,7 @@ window.onload = () => {
     const artist = 'Rammstein',
         list = document.querySelector('.list'),
         slider = document.querySelector('.slider'),
-        timeEl = document.querySelector('.time');
-    let deg = -360,
-        count = 0,
-        time = 0,
-        tempDate,
-        seconds = 0,
-        date = new Date(null),
+        timeEl = document.querySelector('.time'),
         songsArr = [
             'Benzin',
             'Ein Lied',
@@ -21,23 +15,35 @@ window.onload = () => {
             'Zerstoeren',
             'Stirb Nicht Vor Mir'
         ];
+    let deg = -360,
+        count = 0,
+        time = 0,
+        tempDate,
+        seconds = 0,
+        date = new Date(null),
+        volumeElem = document.querySelector('.volume input'),
+        sliderElem = document.querySelector('.slider'),
+        replayImgElem = document.querySelector('.replay img'),
+        playPauseImgElem = document.querySelector('.play-pause');
 
     function liMaker(audio, i, songName) {
         audio.innerHTML = i + 1;
         let tempDate = new Date(null);
         const li = document.createElement('li');
-        const div1 = document.createElement('div');
-        const div2 = document.createElement('div');
+        const songNameElem = document.createElement('div');
+        const durationElem = document.createElement('div');
         li.classList.add('list-item');
-        div1.innerHTML = (i + 1) + songName;
+        songNameElem.innerHTML = (i + 1) + songName;
         audio.addEventListener('loadedmetadata', () => {
             tempDate.setSeconds(audio.duration);
-            div2.innerText = `${tempDate.getUTCMinutes().toString()}:${(tempDate.getUTCSeconds() < 10 ? '0' + tempDate.getUTCSeconds().toString() : tempDate.getUTCSeconds().toString())}`;
+            const minutes = tempDate.getUTCMinutes();
+            const seconds = tempDate.getUTCSeconds();
+            durationElem.innerText = `${minutes.toString()}:${(seconds < 10 ? '0' + seconds.toString() : seconds.toString())}`;
         });
-        div1.classList.add('song');
-        div2.classList.add('duration');
-        li.appendChild(div1);
-        li.appendChild(div2);
+        songNameElem.classList.add('song');
+        durationElem.classList.add('duration');
+        li.appendChild(songNameElem);
+        li.appendChild(durationElem);
         li.appendChild(audio);
         li.addEventListener('click', () => {
             if (li.classList.contains('selected')) {
@@ -64,7 +70,7 @@ window.onload = () => {
         let audio;
         const length = songsArr.length;
         for (i = 0; i < length; i++) {
-            audio = new Audio('media/audio/' + songsArr[i] + '.mp3');
+            audio = new Audio(`media/audio/${songsArr[i]}.mp3`);
             liMaker(audio, i, ` ${artist} - ${songsArr[i]}`);
         }
         list.firstElementChild.classList.add('selected');
@@ -94,13 +100,18 @@ window.onload = () => {
                 slider.value = time;
                 date.setMilliseconds(date.getUTCMilliseconds() + 100);
                 timeEl.innerHTML = `${date.getUTCMinutes().toString()}:${(date.getUTCSeconds() < 10 ? '0' + date.getUTCSeconds().toString() : date.getUTCSeconds().toString())}/${document.querySelector('.selected .duration').innerText}`;
-                if (slider.value === "100" || audio.ended) {
+                console.log(audio.currentTime, audio.duration - 1, audio.currentTime >= audio.duration - 1);
+                if (audio.currentTime >= audio.duration - 1) {
+                    console.log('ended');
                     slider.value = "0";
                     date.setTime(null);
                     time = 0;
                     timeEl.innerHTML = "0:00/" + document.querySelector('.selected .duration').innerText;
-                    document.querySelector('.play-pause img').src = "media/images/play.png";
+                    setTimeout(() => {
+                        document.querySelector('.play-pause img').src = "media/images/play.png";
+                    }, 100);
                     document.querySelector('.status').innerHTML = 'Play';
+
                 } else setTimeout(moveSlider, 100);
             }
         }
@@ -117,9 +128,9 @@ window.onload = () => {
         }
     }
 
-    document.querySelector('.play-pause').addEventListener('click', () => { playMusic(false) });
+    playPauseImgElem.addEventListener('click', () => { playMusic(false) });
 
-    document.querySelector('.replay img').addEventListener('click', event => {
+    replayImgElem.addEventListener('click', event => {
         audio = document.querySelector('.selected').lastElementChild;
         event.target.style.webkitTransform = `rotate(${deg}deg)`;
         event.target.style.mozTransform = `rotate(${deg}deg)`;
@@ -131,15 +142,15 @@ window.onload = () => {
         reset();
     });
 
-    document.querySelector('.volume input').addEventListener('input', () => {
+    volumeElem.addEventListener('input', () => {
         document.querySelector('.selected').lastElementChild.volume = document.querySelector('.volume input').value;
     });
 
-    document.querySelector('.slider').addEventListener('mousedown', () => {
+    sliderElem.addEventListener('mousedown', () => {
         document.querySelector('.selected').lastElementChild.pause();
     });
 
-    document.querySelector('.slider').addEventListener('mouseup', () => {
+    sliderElem.addEventListener('mouseup', () => {
         const mas = document.querySelector('.selected .duration').innerText.split(":");
         seconds = (+mas[0] * 60) + (+mas[1]);
         time = parseInt(document.querySelector('.slider').value);
