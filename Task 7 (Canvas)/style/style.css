@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+.wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around; }
+  .wrapper .myCanvas {
+    background-color: #E6FCFF;
+    border: 1px solid black;
+    box-sizing: border-box; }
+  .wrapper .buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    .wrapper .buttons-container .myButton {
+      user-select: none;
+      background-color: #E6FCFF;
+      border: 1px solid black;
+      font-size: 1.5em;
+      width: 150px;
+      height: 60px; }
