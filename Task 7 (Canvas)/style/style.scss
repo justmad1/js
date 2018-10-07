@@ -8,7 +8,7 @@ $bgc: #E6FCFF;
 }
 
 .wrapper {
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
 
@@ -16,6 +16,7 @@ $bgc: #E6FCFF;
         background-color: $bgc;
         border: $border;
         box-sizing: border-box;
+        border-radius: 5px;
     }
 
     .buttons-container {
@@ -27,6 +28,7 @@ $bgc: #E6FCFF;
             user-select: none;
             background-color: #E6FCFF;
             border: $border;
+            border-radius: 5px;
             font-size: $font-size;
             width: 150px;
             height: 60px;

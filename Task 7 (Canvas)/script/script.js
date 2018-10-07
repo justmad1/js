@@ -5,9 +5,10 @@ const myCanvas = document.querySelector('.myCanvas'),
     ctx = myCanvas.getContext("2d"),
     maxFigures = 10,
     colors = ['#229DBF', '#B2184C', '#FC7F5F', '#FAE7C9', '#6B2257', '#00582F', '#84908C', '#D3E1A4', '#521B32', '#1A1F35'],
-    canvasWidth = 700,
-    canvasHeight = 700,
-    editSize = 15;
+    canvasWidth = 600,
+    canvasHeight = 600,
+    editSize = 15, // Size of editing box
+    editLine = 70; // Length of top editing line
 
 let figures = [],
     i = 0,
@@ -39,10 +40,15 @@ let figures = [],
         ctx.fillRect(rect.x + rect.width - editSize / 2, rect.y - editSize / 2, editSize, editSize);
         ctx.fillRect(rect.x - editSize / 2, rect.y + rect.height - editSize / 2, editSize, editSize);
         ctx.fillRect(rect.x + rect.width - editSize / 2, rect.y + rect.height - editSize / 2, editSize, editSize);
-        ctx.fillRect(rect.x + rect.width / 2 - editSize / 2, rect.y - editSize / 2, editSize, editSize);
         ctx.fillRect(rect.x - editSize / 2, rect.y + rect.height / 2 - editSize / 2, editSize, editSize);
         ctx.fillRect(rect.x + rect.width - editSize / 2, rect.y + rect.height / 2 - editSize / 2, editSize, editSize);
         ctx.fillRect(rect.x + rect.width / 2 - editSize / 2, rect.y + rect.height - editSize / 2, editSize, editSize);
+        // ctx.beginPath();
+        // ctx.moveTo(rect.x + rect.width / 2, rect.y);
+        // ctx.lineTo(rect.x + rect.width / 2, rect.y - editLine);
+        // ctx.stroke();
+        ctx.fillRect(rect.x + rect.width / 2 - editSize / 2, rect.y - editSize / 2, editSize, editSize);
+        //ctx.fillRect(rect.x + rect.width / 2 - editSize / 2, rect.y - editSize / 2 - editLine, editSize, editSize);
     },
 
     Rect = function(x, y, width, height, color) {
@@ -77,6 +83,7 @@ let figures = [],
         if (mouse.x > rect.x + rect.width / 2 - editSize / 2 && mouse.x < rect.x + rect.width / 2 + editSize / 2 && mouse.y > rect.y + rect.height - editSize / 2 && mouse.y < rect.y + rect.height + editSize / 2) return 6;
         if (mouse.x > rect.x - editSize / 2 && mouse.x < rect.x + editSize / 2 && mouse.y > rect.y + rect.height - editSize / 2 && mouse.y < rect.y + rect.height + editSize / 2) return 7;
         if (mouse.x > rect.x - editSize / 2 && mouse.x < rect.x + editSize / 2 && mouse.y > rect.y + rect.height / 2 - editSize / 2 && mouse.y < rect.y + rect.height / 2 + editSize / 2) return 8;
+        if (mouse.x > rect.x + rect.width / 2 - editSize / 2 && mouse.x < rect.x + rect.width / 2 + editSize / 2  && mouse.y > rect.y - editLine - editSize / 2 && mouse.y < rect.y - editLine + editSize / 2) return 9;
         return 0;
     },
 
@@ -159,6 +166,10 @@ let figures = [],
                         mouse.startX = mouse.x;
                         break;
 
+                    case 9:
+                        
+                        break;
+
                     case 0:
                         break;
                 }
@@ -200,8 +211,10 @@ window.addEventListener('mousedown', () => {
     }
 
     for (i = figures.length - 1; i >= 0; i--) {
-        if (cursorInEditingRect(figures[i]))
+        if (cursorInEditingRect(figures[i])){
             figures[i].editing = cursorInEditingRect(figures[i]);
+            break;
+        }
         else
         if (cursorInRect(figures[i])) {
             unselectAll();
@@ -224,7 +237,7 @@ window.addEventListener('mouseup', () => {
 });
 
 deleteButton.addEventListener('click', () => {
-    if (confirm("Удалить выбранный элемент?")) {
+    if (confirm("Удалить выбранную фугуру?")) {
         figures.pop();
         deleteButton.disabled = true;
     }

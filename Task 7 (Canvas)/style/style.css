@@ -3,13 +3,14 @@
   margin: 0; }
 
 .wrapper {
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-around; }
   .wrapper .myCanvas {
     background-color: #E6FCFF;
     border: 1px solid black;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    border-radius: 5px; }
   .wrapper .buttons-container {
     display: flex;
     flex-direction: column;
@@ -18,6 +19,7 @@
       user-select: none;
       background-color: #E6FCFF;
       border: 1px solid black;
+      border-radius: 5px;
       font-size: 1.5em;
       width: 150px;
       height: 60px; }
