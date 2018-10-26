@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <title>File loader</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="dropzone">
+            <h3 class="hint grey-text text-lighten-1">Drop files from your computer here</h3>
+            <div class="progress" style=" width: 90%; margin: auto; margin-bottom: 20px; opacity: 0">
+                <div class="determinate" style="width: 0%"></div>
+            </div>
+            <input id="input" accept=".jpg, .jpeg, .png" multiple type="file" />
+            <label class="btn-large" for="input">Select files</label>
+            <div class="image-container"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
