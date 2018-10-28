@@ -54,7 +54,6 @@ function handleFile(e) {
 
         if (count >= MAX_COUNT) {
             button.classList.add('disabled');
-            //dropzone.removeEventListener('drop');             TO DO: CANCEL DROP ON OVER 12 IMAGES
             break;
         }
     }

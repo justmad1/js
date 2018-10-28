@@ -99,7 +99,7 @@ window.onload = () => {
                 time += 10 / seconds;
                 slider.value = time;
                 date.setMilliseconds(date.getUTCMilliseconds() + 100);
-                timeEl.innerHTML = `${date.getUTCMinutes().toString()}:${(date.getUTCSeconds() < 10 ? '0' + date.getUTCSeconds().toString() : date.getUTCSeconds().toString())}/${document.querySelector('.selected .duration').innerText}`;
+                timeEl.innerHTML = `${date.getUTCMinutes().toString()}:${(date.getUTCSeconds() < 10 ? `0${date.getUTCSeconds().toString()}` : date.getUTCSeconds().toString())}/${document.querySelector('.selected .duration').innerText}`;
                 console.log(audio.currentTime, audio.duration - 1, audio.currentTime >= audio.duration - 1);
                 if (audio.currentTime >= audio.duration - 1) {
                     console.log('ended');
